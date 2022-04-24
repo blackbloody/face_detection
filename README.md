@@ -1,4 +1,4 @@
-# Face Detection Windows Form Desktop
+# Face Detection Windows Form
 
 Application will be connect through Web Socket Face Recognition to get a result of recognition as JSON
 
