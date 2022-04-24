@@ -74,7 +74,7 @@ namespace face_recognition
             CascadeClassifier faceCascasde = new CascadeClassifier("haarcascade_frontalface_default.xml");
             CascadeClassifier faceSideCascasde = new CascadeClassifier("haarcascade_profileface.xml");
 
-            using (capture = new VideoCapture("rtsp://admin:abcd1234@192.168.0.88/1"))
+            using (capture = new VideoCapture("rtsp://username:password@xxx.xxx.x.xx/1"))
             {
                 while (capture.IsOpened() && isRun)
                 {
