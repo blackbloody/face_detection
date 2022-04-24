@@ -50,11 +50,6 @@ namespace face_recognition
             }
         }
 
-        private void ViewLoad(object sender, EventArgs e)
-        {
-
-        }
-
         void find_most_image()
         {
             try
@@ -135,7 +130,6 @@ namespace face_recognition
             {
                 GC.Collect();
                 this.Invoke(new Action(() => il.Images.Add(fileinfo.Name, Image.FromFile(fileinfo.FullName))));
-                //il.Images.Add(Image.FromFile(fileinfo.FullName));
             }
             list_view_img.Sorting = SortOrder.Descending;
             list_view_img.View = View.LargeIcon;
@@ -283,7 +277,7 @@ namespace face_recognition
                 Stopwatch st = new Stopwatch();
                 st.Start();
 
-                using (capture = new VideoCapture("rtsp://admin:abcd1234@192.168.0.88/1"))
+                using (capture = new VideoCapture("rtsp://username:password@xxx.xxx.x.xx/1"))
                 {
 
                     Cv2.StartWindowThread();
@@ -344,12 +338,6 @@ namespace face_recognition
                                 int listFaceLength = faces_front.Length + faces_side.Length;
                                 if (listFaceLength > 0)
                                 {
-                                    try
-                                    {
-                                        //setImageList();
-                                    }
-                                    catch (Exception) { break; }
-
                                     Rect[] listFace = new Rect[listFaceLength];
 
                                     int indexListFace = 0;
@@ -399,7 +387,6 @@ namespace face_recognition
                                                         }
                                                         catch (Exception) { }
 
-                                                        //imageRes[face];
                                                         var faceImage = new Mat();
                                                         Cv2.Resize(imageRes[face], faceImage,new OpenCvSharp.Size(640, 480), 0, 0, interpolation: InterpolationFlags.Cubic);
 
@@ -425,12 +412,7 @@ namespace face_recognition
                                                     {
                                                         isRunningLog = true;
                                                         Console.WriteLine("------------------------------------------");
-                                                        /*
-                                                        try
-                                                        {
-                                                            setImageList();
-                                                        } catch (Exception) { }
-                                                        */
+                                                        
                                                         new Thread(new ThreadStart(() =>
                                                         {
 
@@ -485,14 +467,6 @@ namespace face_recognition
                     Console.WriteLine("Release");
                     capture.Release();
                     Cv2.DestroyAllWindows();
-
-                    if (listLogFolder.Count > 0)
-                    {
-                        foreach (MdlLogFolder mdl in listLogFolder)
-                        {
-                            Console.WriteLine(mdl);
-                        }
-                    }
                 }
             }
         }
